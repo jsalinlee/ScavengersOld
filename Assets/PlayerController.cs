@@ -6,18 +6,36 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
 
     public static float thirst = 100.0f;
+    public float footstepSpeed;
+    public AudioClip[] footstepSounds;
+    public AudioSource audioSource;
+
     private Animator anim;
 
     private bool playerMoving;
     private Vector2 lastMove;
-    
+
+
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        StartCoroutine("Footsteps");
     }
 
-    
+    IEnumerator Footsteps()
+    {
+        while(true)
+        {
+            if(playerMoving)
+            {
+                audioSource.PlayOneShot(footstepSounds[Random.Range(0, 2)]);
+            }
+            yield return new WaitForSeconds(footstepSpeed);
+        }
+    }
+
     void Update()
     {
     	thirst -= 1 * Time.deltaTime;
