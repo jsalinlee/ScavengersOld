@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
 
+    public static float thirst = 100.0f;
     private Animator anim;
 
     private bool playerMoving;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-
+    	thirst -= 1 * Time.deltaTime;
         //movement code
         playerMoving = false;
 
