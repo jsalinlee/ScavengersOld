@@ -9,7 +9,7 @@ public class ThirstController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		thirstImage = GetComponent<Image>();
-		thirstSprites = Resources.LoadAll<Sprite>("thirst_status");
+		thirstSprites = Resources.LoadAll<Sprite>("Sprites/UI/thirst_status");
 		thirstImage.sprite = thirstSprites[0];
 	}
 	
