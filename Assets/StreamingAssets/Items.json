@@ -5,7 +5,7 @@
         "value": 6,
         "stats": {
             "power": 1,
-            "defence": 4,
+            "defense": 4,
             "vitality": 2
         },
         "description": "Gloves made from steel. Yea.",
@@ -19,7 +19,7 @@
         "value": 543,
         "stats": {
             "power": 56,
-            "defence": 2,
+            "defense": 2,
             "vitality": 54
         },
         "description": "It's a stick that's pretty great.",
