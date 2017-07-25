@@ -1076,6 +1076,11 @@ Prefab:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1256501832}
+    - target: {fileID: 114960167426197088, guid: d6743b5dabda62f49b1a43c3d6caaee8,
+        type: 2}
+      propertyPath: cameraSize
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6743b5dabda62f49b1a43c3d6caaee8, type: 2}
   m_IsPrefabParent: 0
