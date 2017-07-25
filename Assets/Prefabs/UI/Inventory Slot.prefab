@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 222209116378035898}
   - component: {fileID: 114311109717152350}
   - component: {fileID: 114797442655941854}
+  - component: {fileID: 210538477883097434}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: Inventory Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +68,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b37ad3fcf6441698cbf653b762d143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  inventoryPanel: {fileID: 0}
+--- !u!210 &210538477883097434
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077304774410746}
+  m_Enabled: 1
+  m_SortingLayerID: 445075859
+  m_SortingLayer: 1
+  m_SortingOrder: 1
 --- !u!222 &222209116378035898
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -6,21 +6,23 @@ using System;
 
 public class InventorySlot : MonoBehaviour, IDropHandler {
 	public int id;
+    public GameObject inventoryPanel;
 
 	private InventoryController inv;
 
 	void Start() {
 		inv = GameObject.Find("Inventory").GetComponent<InventoryController>();
+        inventoryPanel = GameObject.Find("Inventory Panel");
 	}
 	public void OnDrop(PointerEventData eventData) {
-		ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData>();
+		InventorySlotData droppedItem = eventData.pointerDrag.GetComponent<InventorySlotData>();
 		if(inv.items[id].ID == -1) {
 			inv.items[droppedItem.slot] = new Item();
 			inv.items[id] = droppedItem.item;
 			droppedItem.slot = id;
 		} else if(droppedItem.slot != id) {
 			Transform item = this.transform.GetChild(0);
-			item.GetComponent<ItemData>().slot = droppedItem.slot;
+			item.GetComponent<InventorySlotData>().slot = droppedItem.slot;
 			item.transform.SetParent(inv.slots[droppedItem.slot].transform);
 			item.transform.position = inv.slots[droppedItem.slot].transform.position;
 
@@ -28,7 +30,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
 			droppedItem.transform.SetParent(this.transform);
 			droppedItem.transform.position = this.transform.position;
 
-			inv.items[droppedItem.slot] = item.GetComponent<ItemData>().item;
+			inv.items[droppedItem.slot] = item.GetComponent<InventorySlotData>().item;
 			inv.items[id] = droppedItem.item;
 		}
 	}

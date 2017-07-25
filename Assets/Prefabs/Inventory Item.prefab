@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 114523243727023776}
   - component: {fileID: 114208003120353742}
   - component: {fileID: 225000312791317834}
+  - component: {fileID: 210591048681059732}
   m_Layer: 5
-  m_Name: Item
+  m_Name: Inventory Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +156,16 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!210 &210591048681059732
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155649004771564}
+  m_Enabled: 1
+  m_SortingLayerID: 445075859
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!222 &222344697359097274
 CanvasRenderer:
   m_ObjectHideFlags: 1

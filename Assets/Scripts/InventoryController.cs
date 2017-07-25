@@ -9,26 +9,31 @@ public class InventoryController : MonoBehaviour {
 	ItemDatabase database;
 	public GameObject inventorySlot;
 	public GameObject inventoryItem;
+    public Tooltip tooltip;
 
-	private int slotCount;
+	private int maxSlotCount;
+    private int currentSlotCount;
 
 	public List<Item> items = new List<Item>();
 	public List<GameObject> slots = new List<GameObject>();
 
 	void Start() {
 		database = GetComponent<ItemDatabase>();
-		slotCount = 20;
+		maxSlotCount = 20;
+        currentSlotCount = 0;
 		inventoryPanel = GameObject.Find("Inventory Panel");
 		slotPanel = inventoryPanel.transform.Find("Slot Panel").gameObject;
+        inventoryPanel.SetActive(false);
 
-		for(int i = 0; i < slotCount; i++) {
+		for(int i = 0; i < maxSlotCount; i++) {
 			items.Add(new Item());
 			slots.Add(Instantiate(inventorySlot));
 			slots[i].GetComponent<InventorySlot>().id = i;
 			slots[i].transform.SetParent(slotPanel.transform);
 		}
 		AddItem(0);
-		AddItem(1);
+        AddItem(0);
+        AddItem(1);
 		AddItem(1);
 		AddItem(1);
 	}
@@ -36,7 +41,8 @@ public class InventoryController : MonoBehaviour {
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.I)) {
 			if(inventoryPanel.activeSelf) {
-				inventoryPanel.SetActive(false);
+                tooltip.Deactivate();
+                inventoryPanel.SetActive(false);
 			} else {
 				inventoryPanel.SetActive(true);
 			}
@@ -48,7 +54,7 @@ public class InventoryController : MonoBehaviour {
 		if (itemToAdd.Stackable && IsItemInInventory(itemToAdd)) {
 			for(int i = 0; i < items.Count; i++) {
 				if(items[i].ID == id) {
-					ItemData data = slots[i].transform.GetChild(0).GetComponent<ItemData>();
+					InventorySlotData data = slots[i].transform.GetChild(0).GetComponent<InventorySlotData>();
 					data.amount++;
 					data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
 				}
@@ -56,17 +62,18 @@ public class InventoryController : MonoBehaviour {
 		} else {
 			for(int i = 0; i < items.Count; i++) {
 				if(items[i].ID == -1) {
+                    currentSlotCount++;
 					items[i] = itemToAdd;
 					GameObject itemObj = Instantiate(inventoryItem);
-					itemObj.GetComponent<ItemData>().item = itemToAdd;
-					itemObj.GetComponent<ItemData>().slot = i;
+					itemObj.GetComponent<InventorySlotData>().item = itemToAdd;
+					itemObj.GetComponent<InventorySlotData>().slot = i;
 					itemObj.transform.SetParent(slots[i].transform);
-					itemObj.transform.position = Vector2.zero;
+					itemObj.transform.position = slots[i].transform.position;
 					itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;
-					itemObj.GetComponent<ItemData>().amount++;
+					itemObj.GetComponent<InventorySlotData>().amount++;
 					itemObj.name = itemToAdd.Title;
 					slots[i].name = itemToAdd.Title + " Slot";
-					break;
+                    break;
 				}
 			}
 		}
@@ -80,4 +87,12 @@ public class InventoryController : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public bool IsInventoryFull() {
+        if(currentSlotCount == maxSlotCount) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
