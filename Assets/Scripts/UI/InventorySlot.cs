@@ -33,5 +33,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
 			inv.items[droppedItem.slot] = item.GetComponent<InventorySlotData>().item;
 			inv.items[id] = droppedItem.item;
 		}
+        Debug.Log(eventData.position);
 	}
 }

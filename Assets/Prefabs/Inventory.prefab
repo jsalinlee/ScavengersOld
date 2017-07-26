@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4018398838043154}
   - component: {fileID: 114781992833133368}
   - component: {fileID: 114439546902897078}
-  - component: {fileID: 114358651687167032}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114358651687167032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013530631869964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7166c3beb94fe4d999f79e4d98eca9b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114439546902897078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,5 +67,6 @@ MonoBehaviour:
     type: 2}
   inventoryItem: {fileID: 1155649004771564, guid: 2373ade0ff4f74160b2eed994d2473ec,
     type: 2}
+  inGameItem: {fileID: 1578329244528390, guid: 4066ae67823379040a6ee8ef43e0ed1f, type: 2}
   tooltip: {fileID: 114439546902897078}
   slots: []

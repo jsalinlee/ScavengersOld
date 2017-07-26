@@ -165,7 +165,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 445075859
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!222 &222344697359097274
 CanvasRenderer:
   m_ObjectHideFlags: 1

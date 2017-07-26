@@ -77,9 +77,9 @@ SortingGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077304774410746}
   m_Enabled: 1
-  m_SortingLayerID: 445075859
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!222 &222209116378035898
 CanvasRenderer:
   m_ObjectHideFlags: 1
