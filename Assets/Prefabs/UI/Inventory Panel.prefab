@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 224590132103663476}
   - component: {fileID: 222935900733861894}
   - component: {fileID: 114234642102858444}
+  - component: {fileID: 114553732162505830}
   m_Layer: 5
   m_Name: Title Panel
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -190,6 +191,17 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114553732162505830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943885370799066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d603f9db22aa64e4295842badc791a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114708238894311556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,7 +288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: 32}
+  m_AnchoredPosition: {x: 257, y: -23}
   m_SizeDelta: {x: 290, y: 375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224590132103663476
@@ -296,7 +308,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.000002861, y: 0.000015258789}
-  m_SizeDelta: {x: 135.2, y: 31.21}
+  m_SizeDelta: {x: 135, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224597201184878626
 RectTransform:

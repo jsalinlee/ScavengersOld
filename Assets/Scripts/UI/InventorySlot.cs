@@ -20,7 +20,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
 			inv.items[droppedItem.slot] = new Item();
 			inv.items[id] = droppedItem.item;
 			droppedItem.slot = id;
-		} else if(droppedItem.slot != id) {
+		} else if(droppedItem != null && droppedItem.slot != id) {
 			Transform item = this.transform.GetChild(0);
 			item.GetComponent<InventorySlotData>().slot = droppedItem.slot;
 			item.transform.SetParent(inv.slots[droppedItem.slot].transform);
@@ -33,6 +33,5 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
 			inv.items[droppedItem.slot] = item.GetComponent<InventorySlotData>().item;
 			inv.items[id] = droppedItem.item;
 		}
-        Debug.Log(eventData.position);
-	}
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     public Camera mainCamera;
     public GameObject followTarget;
-    private Vector3 targetPostion;
+    private Vector3 targetPosition;
     public float moveSpeed;
     public int cameraSize;
 	void Start () {
@@ -23,8 +23,8 @@ public class CameraController : MonoBehaviour {
     }
 	void Update ()
     {
-        targetPostion = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, targetPostion, moveSpeed * Time.deltaTime);
+        targetPosition = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
 	}
 }

@@ -7,14 +7,17 @@ using System;
 public class InventorySlotData : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
 	public Item item;
 	public int slot;
+    public RectTransform inventoryPanelBounds;
 
 	private InventoryController inv;
 	private Tooltip tooltip;
 	private Vector2 offset;
+    private GameObject inventoryPanel;
 
 	void Start() {
 		inv = GameObject.Find("Inventory").GetComponent<InventoryController>();
 		tooltip = inv.GetComponent<Tooltip>();
+        inventoryPanel = GameObject.Find("Inventory Panel");
 	}
 
 	public void OnPointerDown(PointerEventData eventData) {
@@ -24,7 +27,7 @@ public class InventorySlotData : MonoBehaviour, IPointerDownHandler, IPointerUpH
             this.transform.position = eventData.position - offset;
             inv.slots[slot].name = "Empty Inventory Slot";
             GetComponent<CanvasGroup>().blocksRaycasts = false;
-		}
+        }
 	}
 
     public void OnPointerUp(PointerEventData eventData) {
@@ -46,6 +49,13 @@ public class InventorySlotData : MonoBehaviour, IPointerDownHandler, IPointerUpH
 		this.transform.position = inv.slots[slot].transform.position;
         inv.slots[slot].name = this.transform.name + " Slot";
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        Rect inventoryBounds = inventoryPanelBounds.rect;
+        inventoryBounds.center = inventoryPanel.transform.position;
+        if (!inventoryBounds.Contains(eventData.position)) {
+            Debug.Log("item to drop: " + item.UniqueID);
+            inv.DropItem(item.UniqueID);
+        }
 	}
 
 	public void OnPointerEnter(PointerEventData eventData) {

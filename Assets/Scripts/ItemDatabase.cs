@@ -17,7 +17,11 @@ public class ItemDatabase : MonoBehaviour {
 	public Item FetchItemByID(int id) {
 		for (int i = 0; i < database.Count; i++) {
 			if (database[i].ID == id) {
-				return database[i];
+                if(database[i].ItemType == ItemType.Weapon) {
+                    return database[i] as Weapon;
+                } else {
+                    return database[i];
+                }
 			}
 		}
 		return null;
@@ -42,8 +46,16 @@ public class ItemDatabase : MonoBehaviour {
     }
 }
 
+public enum ItemType
+{
+    Generic,
+    Weapon,
+    Armor
+}
+
 public class Item {
     public int ID { get; set; }
+    public ItemType ItemType { get; set; }
     public string Title { get; set; }
     public int Value { get; set; }
     public float Durability { get; set; }
@@ -57,6 +69,7 @@ public class Item {
 
     public Item(int id, string title, int value, float durability, string description, bool stackable, int rarity, string slug) {
         this.ID = id;
+        this.ItemType = ItemType.Generic;
         this.Title = title;
         this.Value = value;
         this.Durability = durability;
@@ -66,25 +79,40 @@ public class Item {
         this.Slug = slug;
         this.Sprite = Resources.Load<Sprite>("Sprites/Items/" + slug);
         this.Quantity = 1;
-        this.UniqueID = Guid.NewGuid();
     }
 
     public Item() {
         this.ID = -1;
     }
+
+    public Item(Item template) {
+        this.ID = template.ID;
+        this.ItemType = template.ItemType;
+        this.Title = template.Title;
+        this.Value = template.Value;
+        this.Durability = template.Durability;
+        this.Description = template.Description;
+        this.Stackable = template.Stackable;
+        this.Rarity = template.Rarity;
+        this.Slug = template.Slug;
+        this.Sprite = Resources.Load<Sprite>("Sprites/Items/" + template.Slug);
+        this.Quantity = 1;
+        this.UniqueID = template.UniqueID;
+    }
 }
 
 public class Weapon : Item {
-    public string Type { get; set; }
+    public string WeaponType { get; set; }
     public float Power { get; set; }
     public int AmmoID { get; set; }
     public int ClipCapacity { get; set; }
     public float ReloadTime { get; set; }
 
-    public Weapon(int id, string title, int value, float durability, string description, bool stackable, int rarity, string slug, string type, float power, int ammoID, int clipCapacity, float reloadTime): base(id, title, value, durability, description, stackable, rarity, slug) {
-        this.Type = type;
+    public Weapon(int id, string title, int value, float durability, string description, bool stackable, int rarity, string slug, string weaponType, float power, int ammoID, int clipCapacity, float reloadTime): base(id, title, value, durability, description, stackable, rarity, slug) {
+        this.ItemType = ItemType.Weapon;
+        this.WeaponType = weaponType;
         this.Power = power;
-        if (this.Type == "melee" || this.Type == "special") {
+        if (this.WeaponType == "melee" || this.WeaponType == "special") {
             this.AmmoID = -1;
             this.ClipCapacity = -1;
             this.ReloadTime = -1;
@@ -92,6 +120,34 @@ public class Weapon : Item {
             this.AmmoID = ammoID;
             this.ClipCapacity = clipCapacity;
             this.ReloadTime = reloadTime;
+        }
+    }
+
+    public Weapon(Weapon template) {
+        this.ID = template.ID;
+        this.ItemType = template.ItemType;
+        this.Title = template.Title;
+        this.Value = template.Value;
+        this.Durability = template.Durability;
+        this.Description = template.Description;
+        this.Stackable = template.Stackable;
+        this.Rarity = template.Rarity;
+        this.Slug = template.Slug;
+        this.Sprite = Resources.Load<Sprite>("Sprites/Items/" + template.Slug);
+        this.Quantity = 1;
+        this.UniqueID = template.UniqueID;
+        this.WeaponType = template.WeaponType;
+        if (template.WeaponType == "melee" || template.WeaponType == "special")
+        {
+            this.AmmoID = -1;
+            this.ClipCapacity = -1;
+            this.ReloadTime = -1;
+        }
+        else
+        {
+            this.AmmoID = template.AmmoID;
+            this.ClipCapacity = template.ClipCapacity;
+            this.ReloadTime = template.ReloadTime;
         }
     }
 }
