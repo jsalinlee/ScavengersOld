@@ -105,8 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbc941db2a15714bb3e65768d9bc6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   followTarget: {fileID: 0}
   moveSpeed: 5
+  cameraSize: 5
 --- !u!124 &124239935145993144
 Behaviour:
   m_ObjectHideFlags: 1
