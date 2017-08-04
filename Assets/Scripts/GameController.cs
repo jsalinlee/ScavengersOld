@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class GameControl : MonoBehaviour {
-    
     public static GameControl control;
     
     public float health;
