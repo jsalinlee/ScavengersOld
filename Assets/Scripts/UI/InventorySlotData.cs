@@ -34,8 +34,8 @@ public class InventorySlotData : MonoBehaviour, IPointerDownHandler, IPointerUpH
         if (this.transform.parent.parent.transform.Find("Slot Panel") != null) {
             this.transform.SetParent(inv.slots[slot].transform);
             this.transform.position = inv.slots[slot].transform.position;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
 	public void OnDrag(PointerEventData eventData) {

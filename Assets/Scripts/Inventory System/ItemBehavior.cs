@@ -53,7 +53,6 @@ public class ItemBehavior: MonoBehaviour {
         if (collision.transform.tag == "Player" && !inventoryController.IsInventoryFull() && Input.GetKeyDown(KeyCode.E)) {
             Debug.Log("Item to add: " + item.UniqueID);
             inventoryController.AddItem(item, item.ID);
-            //inventoryController.DropItem(inventoryController.items[1].UniqueID);
             Destroy(gameObject);
         }
     }
